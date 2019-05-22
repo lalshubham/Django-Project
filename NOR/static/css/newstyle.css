@@ -1,0 +1,9 @@
+p{
+    color: #999;
+    font-family: 'Open Sans', sans-serif;
+}
+.details p {
+    /* max-width: 50%; */
+    font-size: 15px;
+    color: red;
+}

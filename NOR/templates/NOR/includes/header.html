@@ -1,0 +1,27 @@
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+
+ 
+<nav>
+    <ul>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Contact US</li>
+        {% if user.is_authenticated %}
+            <ul>
+                <li>
+                    <p>Hi {{ user.username }}!</p>
+                    <form action="{% url 'accounts:logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'accounts:login' %}"> <button class="btn btn-success">Login</button></a>
+        {% endif %}
+        
+    </ul>
+</nav>

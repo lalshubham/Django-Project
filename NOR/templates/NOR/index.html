@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/newstyle.css' %}">
+</head>
+
+<body>
+{% include "./includes/header.html" %}
+<h1>Hi! Index</h1>
+
+<div class="container">
+        <div class="row">
+            <a href="{% url 'blogs:blog_create' %}"><button class="btn btn-success">Create Blog</button></a>
+            <div class="col-lg-6 col-md-6">
+                {% for article in articles %}
+                   <h2>{{ article.title }}</h2> 
+                    <br>
+                   <img src="{{ article.thumb.url }}" alt="thumbnail-image" width="150px" height="150px">
+                   <br>
+                   <small>{{ article.date }}</small><br>
+                   <a href="{% url 'blogs:details' slug=article.slug %}">{{ article.slug }}</a> 
+                   <p>{{ article.snippet }}<a href="{% url 'blogs:details' slug=article.slug %}">Read More >>></a></p>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+<div id="CheckFonts">
+    <p>Hello How Are You</p>
+</div>
+{% include "./includes/footer.html" %}
+<script>
+   
+</script>
+<script type="" src="{% static '/js/style.js' %}"></script>
+</body>
+</html>
